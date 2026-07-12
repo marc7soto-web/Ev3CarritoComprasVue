@@ -49,44 +49,72 @@ const productos = ref([
 
 <template>
 
-<div class="container mt-4">
+  <div class="container mt-4">
 
-  <h1 class="text-center mb-4">
-    Carrito de Compras
-  </h1>
+    <h1 class="text-center mb-4">
+      Carrito de Compras
+    </h1>
 
-  <div class="row">
+    <div class="row">
 
-    <!-- Columna izquierda -->
-    <div class="col-md-6">
-      <h3>Productos</h3>
-      <div
-        class="card mb-3"
-        v-for="producto in productos"
-        :key="producto.id"
-      >
-        <div class="card-body">
-          <h5>{{ producto.nombre }}</h5>
-          <p>
-            Precio:
-            ${{ producto.precio }}
-          </p>
-          <p>
-            Stock:
-            {{ producto.stock }}
-          </p>
+      <!-- Columna izquierda -->
+      <div class="col-md-6">
+
+        <h3 class="mb-3">
+          Productos Disponibles
+        </h3>
+
+        <!-- Recorre todos los productos en el arreglo productos -->
+
+        <div v-for="producto in productos" :key="producto.id" class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-4">
+                <img :src="producto.imagen" class="img-fluid producto-img" :alt="producto.nombre">
+              </div>
+              <div class="col-8">
+                <h5>
+                  {{ producto.nombre }}
+                </h5>
+                <p>
+                  Precio:
+                  ${{ producto.precio.toLocaleString('es-CL') }}
+                </p>
+                <p>
+                  Stock:
+                  {{ producto.stock }}
+                </p>
+                <button class="btn btn-primary">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha -->
+      <div class="col-md-6">
+        <h3>Productos agregados</h3>
+        <div class="alert alert-info">
+          No hay productos agregados
         </div>
       </div>
     </div>
-
-    <!-- Columna derecha -->
-    <div class="col-md-6">
-      <h3>Carrito</h3>
-      <div class="alert alert-info">
-        No hay productos agregados
-      </div>
-    </div>
   </div>
-</div>
 
 </template>
+
+<style>
+/* Ajuste de las imágenes de cada producto */
+.producto-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+/* Sombra para las tarjetas */
+.card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+</style>
