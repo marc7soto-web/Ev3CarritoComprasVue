@@ -57,6 +57,15 @@ function removerProducto(id) {
   }
 }
 
+/* Obtiene la cantidad actual de un producto dentro del carrito */
+
+function obtenerCantidad(id) {
+
+  const item = carrito.value.find(
+    producto => producto.id === id
+  )
+  return item ? item.cantidad : 0
+}
 
 /* Productos disponibles definidos en la pauta del ejercicio */
 
@@ -151,10 +160,14 @@ const total = computed(() => {
                   ${{ producto.precio.toLocaleString('es-CL') }}
                 </p>
                 <p>
-                  Stock:
-                  {{ producto.stock }}
+                  Stock disponible:
+                  {{ producto.stock - obtenerCantidad(producto.id) }}
                 </p>
-                <button class="btn btn-primary" @click="agregarCarrito(producto)">
+                <p v-if="obtenerCantidad(producto.id) >= producto.stock" class="text-danger fw-bold">
+                  Sin stock disponible
+                </p>
+                <button class="btn btn-primary" @click="agregarCarrito(producto)"
+                  :disabled="obtenerCantidad(producto.id) >= producto.stock">
                   Agregar al carrito
                 </button>
               </div>
