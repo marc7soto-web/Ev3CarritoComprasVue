@@ -16,21 +16,31 @@ const carrito = ref([])
 
 /* Agrega productos al carrito */
 
+/*
+  Agrega productos al carrito validando el stock disponible */
+
 function agregarCarrito(producto) {
+
   const existe = carrito.value.find(
     item => item.id === producto.id
   )
-
   if (existe) {
-    existe.cantidad++
 
+    /* Si la cantidad agregada supera el stock disponible, se muestra un mensaje */
+    if (existe.cantidad >= producto.stock) {
+      alert('No hay más unidades disponibles de este producto.')
+      return
+    }
+    existe.cantidad++
   } else {
+
     carrito.value.push({
       ...producto,
       cantidad: 1
     })
   }
 }
+
 
 /* Productos disponibles definidos en la pauta del ejercicio */
 
