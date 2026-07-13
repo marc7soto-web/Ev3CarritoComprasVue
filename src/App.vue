@@ -1,6 +1,6 @@
 <script setup>
 
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 /* Importación de imágenes de los productos */
 
@@ -104,6 +104,17 @@ const productos = ref([
     imagen: silla
   }
 ])
+
+/* Calcula automáticamente el total a pagar según los productos que existen en el carrito */
+
+const total = computed(() => {
+  return carrito.value.reduce(
+    (acumulador, item) =>
+      acumulador + (item.precio * item.cantidad),
+    0
+  )
+})
+
 </script>
 
 <template>
@@ -185,6 +196,14 @@ const productos = ref([
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Total a pagar -->
+        <div class="alert alert-success mt-3">
+          <h4>
+            Total a pagar:
+            ${{ total.toLocaleString('es-CL') }}
+          </h4>
         </div>
       </div>
     </div>
