@@ -41,6 +41,22 @@ function agregarCarrito(producto) {
   }
 }
 
+/* Elimina un producto del carrito de compras */
+
+function removerProducto(id) {
+
+  const item = carrito.value.find(
+    producto => producto.id === id
+  )
+  if (!item) return
+  item.cantidad--
+  if (item.cantidad <= 0) {
+    carrito.value = carrito.value.filter(
+      producto => producto.id !== id
+    )
+  }
+}
+
 
 /* Productos disponibles definidos en la pauta del ejercicio */
 
@@ -163,6 +179,9 @@ const productos = ref([
                   Cantidad:
                   {{ item.cantidad }}
                 </p>
+                <button class="btn btn-danger" @click="removerProducto(item.id)">
+                  Remover del carrito
+                </button>
               </div>
             </div>
           </div>
