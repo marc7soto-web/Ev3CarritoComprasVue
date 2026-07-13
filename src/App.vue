@@ -1,5 +1,38 @@
 <script setup>
+
 import { ref } from 'vue'
+
+/* Importación de imágenes de los productos */
+
+import audifono from './assets/productos/audifono.png'
+import mouse from './assets/productos/mouse.png'
+import teclado from './assets/productos/teclado.png'
+import gabinete from './assets/productos/gabinete.png'
+import pantalla from './assets/productos/pantalla.png'
+import silla from './assets/productos/silla.png'
+
+/* Almacena los productos agregados por el usuario */
+const carrito = ref([])
+
+/* Agrega productos al carrito */
+
+function agregarCarrito(producto) {
+  const existe = carrito.value.find(
+    item => item.id === producto.id
+  )
+
+  if (existe) {
+    existe.cantidad++
+
+  } else {
+    carrito.value.push({
+      ...producto,
+      cantidad: 1
+    })
+  }
+}
+
+/* Productos disponibles definidos en la pauta del ejercicio */
 
 const productos = ref([
   {
@@ -7,42 +40,42 @@ const productos = ref([
     nombre: 'Audífono',
     precio: 30000,
     stock: 3,
-    imagen: '/img/audifono.png'
+    imagen: audifono
   },
   {
     id: 2,
     nombre: 'Mouse',
     precio: 20000,
     stock: 5,
-    imagen: '/img/mouse.png'
+    imagen: mouse
   },
   {
     id: 3,
     nombre: 'Teclado',
     precio: 15000,
     stock: 10,
-    imagen: '/img/teclado.png'
+    imagen: teclado
   },
   {
     id: 4,
     nombre: 'Gabinete',
     precio: 35000,
     stock: 4,
-    imagen: '/img/gabinete.png'
+    imagen: gabinete
   },
   {
     id: 5,
     nombre: 'Pantalla',
     precio: 175000,
     stock: 3,
-    imagen: '/img/pantalla.png'
+    imagen: pantalla
   },
   {
     id: 6,
     nombre: 'Silla',
     precio: 150000,
     stock: 2,
-    imagen: '/img/silla.png'
+    imagen: silla
   }
 ])
 </script>
@@ -84,7 +117,7 @@ const productos = ref([
                   Stock:
                   {{ producto.stock }}
                 </p>
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" @click="agregarCarrito(producto)">
                   Agregar al carrito
                 </button>
               </div>
@@ -95,9 +128,34 @@ const productos = ref([
 
       <!-- Columna derecha -->
       <div class="col-md-6">
-        <h3>Productos agregados</h3>
-        <div class="alert alert-info">
-          No hay productos agregados
+
+        <h3>
+          Productos Agregados
+        </h3>
+
+        <!-- Mensaje cuando el carrito está vacío -->
+        <div v-if="carrito.length === 0" class="alert alert-info">
+          No hay productos agregados.
+        </div>
+
+        <!-- Productos agregados -->
+        <div v-for="item in carrito" :key="item.id" class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-4">
+                <img :src="item.imagen" class="img-fluid producto-img">
+              </div>
+              <div class="col-8">
+                <h5>
+                  {{ item.nombre }}
+                </h5>
+                <p>
+                  Cantidad:
+                  {{ item.cantidad }}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
