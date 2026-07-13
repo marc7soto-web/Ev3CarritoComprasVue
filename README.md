@@ -1,44 +1,108 @@
 # Ev3CarritoComprasVue
 
-This template should help get you started developing with Vue 3 in Vite.
+Evaluación N°3 - Desarrollo de un carrito de compras utilizando Vue.js, JavaScript, Bootstrap y CSS
 
-## Recommended IDE Setup
+## Descripción
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Este proyecto consiste en el desarrollo de una aplicación web responsiva que permite gestionar un carrito de compras.
 
-## Recommended Browser Setup
+La aplicación fue desarrollada utilizando Vue.js, JavaScript, HTML, CSS y Bootstrap, permitiendo visualizar productos, agregarlos al carrito, controlar el stock disponible, eliminar productos y calcular automáticamente el total a pagar
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Características
 
-## Customize configuration
+- Visualización de productos disponibles
+- Visualización de productos agregdos al carrito
+- Imágenes para cada producto
+- Control de stock disponible
+- Validación de la cantidad máxima de productos
+- Mensaje de alerta cuando el stock es insuficiente
+- Incremento y decremento de cantidades
+- Eliminación de productos del carrito
+- Cálculo automático del total a pagar
+- Diseño responsivo mediante Bootstrap
+- Desarrollo utilizando Vue.js
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Herramientas de desarrollo
 
-## Project Setup
+- Visual Studio Code
+- Git 2.54 for Windows
+- GitHub
+- Node.js
+- npm
 
-```sh
+## Tecnologías utilizadas
+
+- Vue 3
+- JavaScript
+- HTML5
+- CSS3
+- Bootstrap 5
+- Vite
+- Git
+- GitHub
+
+
+## Repositorio GitHub
+
+https://github.com/marc7soto-web/Ev3CarritoComprasVue
+
+
+## Demo en línea
+
+https://ev2carritocomprasvue.netlify.app/
+
+
+
+## Instrucciones para Instalar el proyecto
+
+### Requisitos previos
+
+Antes de ejecutar el proyecto es necesario tener instalado:
+
+- Node.js
+- npm
+- Git 2.54 o superior
+- Visual Studio Code (recomendado)
+
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/marc7soto-web/Ev3CarritoComprasVue.git
+```
+
+### 2. Ingresar al directorio del proyecto
+
+```bash
+cd Ev3CarritoComprasVue
+```
+
+### 3. Instalar las dependencias
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Ejecución del proyecto
 
-```sh
+### Iniciar el servidor de desarrollo
+
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+Una vez ejecutado el comando, Vite generará una dirección similar a:
 
-```sh
-npm run build
+```text
+http://localhost:5173/
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+Abrir dicha dirección en el navegador para visualizar la aplicación.
 
-```sh
-npm run lint
+## Compilación para producción
+
+Generar la versión optimizada del proyecto:
+
+```bash
+npm run build
 ```
